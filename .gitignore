@@ -1,0 +1,39 @@
+node_modules
+.next
+.next/
+out
+build
+dist
+
+# env
+.env
+.env.*.local
+.env.local
+
+# logs
+logs
+*.log
+
+# data
+data
+*.sqlite
+*.db
+
+# editor
+.DS_Store
+.vscode/*
+!.vscode/extensions.json
+
+# prisma
+prisma/*.db
+
+# user-uploaded files (avatars, etc.) — survive deploys, not in repo
+public/uploads/
+# (legacy) local-disk store uploads — store files now live in S3, see store-files.ts
+.data/
+.nx/
+*.tsbuildinfo
+next-env.d.ts
+
+coverage/
+.logs/
