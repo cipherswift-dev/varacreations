@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { Cormorant_Garamond, Jost } from 'next/font/google'
 import './globals.css'
+import { SITE_LIVE } from '@/lib/site'
 
 const cormorant = Cormorant_Garamond({
   subsets: ['latin'],
@@ -22,6 +23,8 @@ export const metadata: Metadata = {
   description:
     'Custom embroidery for saree blouses, school uniforms, team wear and personalised gifts. Family-run studio in Visakhapatnam, Andhra Pradesh.',
   icons: { icon: '/logo-icon.svg' },
+  // Keep search engines away until launch (NEXT_PUBLIC_SITE_LIVE=true).
+  robots: SITE_LIVE ? undefined : { index: false, follow: false },
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
