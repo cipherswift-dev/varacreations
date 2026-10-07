@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import MadeInIndia from '@/components/MadeInIndia'
 
 export default function FooterSlim() {
   return (
@@ -24,6 +25,9 @@ export default function FooterSlim() {
         />
         <div style={{ fontSize: 13, color: 'rgba(246,236,218,0.5)' }}>
           © 2026 Vara Creations · Stitched with love in Visakhapatnam
+          <div style={{ marginTop: 6, textAlign: 'center' }}>
+            <MadeInIndia color="#F0B84B" size={12} />
+          </div>
         </div>
         <Link href="/" style={{ color: '#F0B84B', textDecoration: 'none', fontSize: 14 }}>
           ← Back to home

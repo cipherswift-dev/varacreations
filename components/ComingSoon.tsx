@@ -1,5 +1,6 @@
 import { Plus_Jakarta_Sans } from 'next/font/google'
 import './ComingSoon.css'
+import MadeInIndia from '@/components/MadeInIndia'
 
 const jakarta = Plus_Jakarta_Sans({
   subsets: ['latin'],
@@ -144,6 +145,10 @@ export default function ComingSoon() {
             <span className="cs-stitch-line" />
           </div>
 
+          <div style={{ marginTop: 14 }}>
+            <MadeInIndia color="#6c2b85" size={12} />
+          </div>
+
           <p className="cs-lead">
             We&rsquo;re putting the final stitches on our new website. Meanwhile, our home embroidery studio in
             Visakhapatnam is open for saree blouses, school uniforms, team wear and personalised gifts.
@@ -188,6 +193,7 @@ export default function ComingSoon() {
           <small>
             &copy; 2026 <b>Vara Creations</b>. All rights reserved. Home embroidery studio, Visakhapatnam.
           </small>
+          <MadeInIndia color="#2a1e17" size={11} />
           <a className="cs-wa-round" href={WA_HREF} target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
             <WaIcon size={16} />
           </a>

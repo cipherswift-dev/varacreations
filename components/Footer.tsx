@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import MadeInIndia from '@/components/MadeInIndia'
 
 export default function Footer() {
   return (
@@ -80,6 +81,9 @@ export default function Footer() {
         }}
       >
         © 2026 Vara Creations · Stitched with love in Visakhapatnam
+        <div style={{ marginTop: 10 }}>
+          <MadeInIndia color="#F0B84B" size={12} />
+        </div>
       </div>
     </footer>
   )

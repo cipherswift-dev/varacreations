@@ -2,6 +2,7 @@ import Link from 'next/link'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import LotusIcon from '@/components/LotusIcon'
+import MadeInIndia from '@/components/MadeInIndia'
 
 const WA_HREF =
   'https://wa.me/919966906773?text=Hi%20Vara%20Creations!%20I%27d%20like%20a%20quote%20for%20embroidery.'
@@ -152,6 +153,9 @@ export default function HomePage() {
             >
               <LotusIcon size={24} />
               Home embroidery studio · Visakhapatnam
+            </div>
+            <div style={{ marginTop: 14 }}>
+              <MadeInIndia />
             </div>
 
             <h1
