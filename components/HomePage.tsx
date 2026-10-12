@@ -3,6 +3,7 @@ import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import LotusIcon from '@/components/LotusIcon'
 import MadeInIndia from '@/components/MadeInIndia'
+import WorkCarousel from '@/components/WorkCarousel'
 
 const WA_HREF =
   'https://wa.me/919966906773?text=Hi%20Vara%20Creations!%20I%27d%20like%20a%20quote%20for%20embroidery.'
@@ -60,7 +61,7 @@ const HOW = [
   {
     n: '3',
     title: 'Pickup or delivery',
-    body: "Collect from Kurmannapalem, Visakhapatnam — or we'll courier it anywhere in India, safely packed.",
+    body: "Pickup by appointment — or we'll courier it anywhere in India, safely packed.",
   },
 ]
 
@@ -121,14 +122,8 @@ export default function HomePage() {
       <section id="top" style={{ position: 'relative', overflow: 'hidden', background: '#FBF8F2' }}>
         {/* Background image */}
         <div
-          style={{
-            position: 'absolute',
-            inset: 0,
-            backgroundImage: 'url(/hero-bg.png)',
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-            backgroundRepeat: 'no-repeat',
-          }}
+          className="hero-bg"
+          style={{ position: 'absolute', inset: 0 }}
         />
         {/* Gradient overlay — cream on left for readability, fades to transparent on right */}
         <div className="hero-overlay" style={{ position: 'absolute', inset: 0 }} />
@@ -260,62 +255,21 @@ export default function HomePage() {
         >
           <div>
             <div style={{ fontSize: 13, letterSpacing: 3, textTransform: 'uppercase', color: '#854F0B', marginBottom: 12 }}>
-              Our work
+              What we do
             </div>
             <h2
               className="work-h2"
               style={{ fontFamily: 'var(--font-cormorant), serif', fontSize: 42, fontWeight: 600, margin: 0 }}
             >
-              Recent pieces from the studio
+              What we stitch, start to finish
             </h2>
           </div>
           <div style={{ fontSize: 14, color: '#9C8F76', maxWidth: 260, textAlign: 'right' }}>
-            A glimpse of what we stitch — blouses, uniforms, gifts and team wear.
+            From a single blouse to a hundred uniforms — here is what we deliver.
           </div>
         </div>
 
-        <div className="work-grid">
-          {[
-            { src: '/work-blouse.png',  alt: 'Saree blouse maggam embroidery',        label: 'Blouse — maggam work',   pos: 'center top' },
-            { src: '/work-school.png',  alt: 'School uniform embroidery logo on shirt', label: 'School logo on shirt',   pos: 'center 18%' },
-            { src: '/work-gifts.jpeg',  alt: 'Personalised embroidered handkerchiefs',  label: 'Personalised gifts',      pos: 'center center' },
-            { src: '/work-team.png',    alt: 'Team group embroidered uniforms',          label: 'Team & group orders',    pos: 'center top' },
-          ].map(({ src, alt, label, pos }) => (
-            <div
-              key={label}
-              style={{ position: 'relative', borderRadius: 18, overflow: 'hidden', height: 280 }}
-            >
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src={src}
-                alt={alt}
-                style={{
-                  width: '100%',
-                  height: '100%',
-                  objectFit: 'cover',
-                  objectPosition: pos,
-                  display: 'block',
-                  filter: 'brightness(1.04) saturate(0.88) contrast(1.02)',
-                }}
-              />
-              {/* Bottom label overlay */}
-              <div
-                style={{
-                  position: 'absolute',
-                  bottom: 0,
-                  left: 0,
-                  right: 0,
-                  padding: '36px 14px 12px',
-                  background: 'linear-gradient(to top, rgba(65,36,2,0.68) 0%, transparent 100%)',
-                }}
-              >
-                <span style={{ color: '#F6ECDA', fontSize: 13, fontWeight: 500, letterSpacing: 0.3 }}>
-                  {label}
-                </span>
-              </div>
-            </div>
-          ))}
-        </div>
+        <WorkCarousel />
       </section>
 
       {/* ══ HOW IT WORKS ══ */}

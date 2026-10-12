@@ -128,64 +128,6 @@ export default function ContactPage() {
                 <div style={{ fontSize: 14, color: '#6B5335' }}>+91 99669 06773 · 9 am – 8 pm, all days</div>
               </div>
             </a>
-
-            {/* Email */}
-            <a href="mailto:varacreations@gmail.com" className="contact-card contact-card-email">
-              <div
-                style={{
-                  width: 46,
-                  height: 46,
-                  borderRadius: '50%',
-                  background: '#FDE7F1',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  flexShrink: 0,
-                }}
-              >
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#BE185D" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                  <rect x="2" y="4" width="20" height="16" rx="2" />
-                  <path d="m22 7-10 6L2 7" />
-                </svg>
-              </div>
-              <div>
-                <div style={{ fontWeight: 600, fontSize: 16 }}>Email</div>
-                <div style={{ fontSize: 14, color: '#6B5335' }}>varacreations@gmail.com</div>
-              </div>
-            </a>
-
-            {/* Address */}
-            <div className="contact-card-addr">
-              <div
-                style={{
-                  width: 46,
-                  height: 46,
-                  borderRadius: '50%',
-                  background: '#F0E9FB',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  flexShrink: 0,
-                }}
-              >
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#5B21B6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                  <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
-                  <circle cx="12" cy="10" r="3" />
-                </svg>
-              </div>
-              <div>
-                <div style={{ fontWeight: 600, fontSize: 16 }}>Home studio</div>
-                <div style={{ fontSize: 14, color: '#6B5335', lineHeight: 1.7 }}>
-                  102, Harshitha Homes, Sathavahanagar,
-                  <br />
-                  Kurmannapalem, Visakhapatnam,
-                  <br />
-                  Andhra Pradesh — 530032
-                  <br />
-                  <span style={{ color: '#9C8F76' }}>Pickups by appointment — message us first.</span>
-                </div>
-              </div>
-            </div>
           </div>
 
           {/* Quote form */}
