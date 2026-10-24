@@ -1,9 +1,7 @@
 'use client'
 import { useState } from 'react'
 import Link from 'next/link'
-
-const WA_HREF =
-  'https://wa.me/919966906773?text=Hi%20Vara%20Creations!%20I%27d%20like%20a%20quote%20for%20embroidery.'
+import { copy, prefix, waHref, type Lang } from '@/lib/i18n'
 
 const WaIcon = () => (
   <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
@@ -11,7 +9,38 @@ const WaIcon = () => (
   </svg>
 )
 
-export default function Header({ activePage }: { activePage?: 'contact' }) {
+function LangToggle({ lang, activePage }: { lang: Lang; activePage?: 'contact' }) {
+  const path = activePage === 'contact' ? '/contact' : ''
+  return (
+    <div className="lang-toggle" role="group" aria-label={copy[lang].nav.langLabel}>
+      <Link
+        href={path || '/'}
+        hrefLang="en"
+        lang="en"
+        className={lang === 'en' ? 'active' : undefined}
+        aria-current={lang === 'en' ? 'true' : undefined}
+        title="English"
+      >
+        EN
+      </Link>
+      <Link
+        href={'/te' + path}
+        hrefLang="te"
+        lang="te"
+        className={lang === 'te' ? 'active' : undefined}
+        aria-current={lang === 'te' ? 'true' : undefined}
+        title="తెలుగు"
+      >
+        అ
+      </Link>
+    </div>
+  )
+}
+
+export default function Header({ lang, activePage }: { lang: Lang; activePage?: 'contact' }) {
+  const t = copy[lang].nav
+  const p = prefix(lang)
+  const WA_HREF = waHref(lang)
   const [open, setOpen] = useState(false)
   const close = () => setOpen(false)
 
@@ -38,46 +67,49 @@ export default function Header({ activePage }: { activePage?: 'contact' }) {
           gap: 24,
         }}
       >
-        <Link href="/" style={{ display: 'flex', alignItems: 'center', gap: 10, textDecoration: 'none' }}>
+        <Link href={p || '/'} style={{ display: 'flex', alignItems: 'center', gap: 10, textDecoration: 'none' }}>
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src="/logo-icon.svg" alt="" aria-hidden="true" style={{ height: 52, width: 'auto', display: 'block' }} />
           <div style={{ borderLeft: '1px solid rgba(65,36,2,0.2)', paddingLeft: 11 }}>
-            <div style={{ fontFamily: 'Georgia,"Times New Roman",serif', fontSize: 26, fontWeight: 700, letterSpacing: '1.5px', color: '#412402', lineHeight: 1 }}>
+            <div className="logo-text" style={{ fontFamily: 'Georgia,"Times New Roman",serif', fontSize: 26, fontWeight: 700, letterSpacing: '1.5px', color: '#412402', lineHeight: 1 }}>
               VARA
             </div>
-            <div style={{ fontFamily: 'Helvetica,Arial,sans-serif', fontSize: 10, fontWeight: 500, letterSpacing: '5px', color: '#854F0B', textTransform: 'uppercase', lineHeight: 1, marginTop: 5 }}>
+            <div className="logo-text" style={{ fontFamily: 'Helvetica,Arial,sans-serif', fontSize: 10, fontWeight: 500, letterSpacing: '5px', color: '#854F0B', textTransform: 'uppercase', lineHeight: 1, marginTop: 5 }}>
               CREATIONS
             </div>
           </div>
           <span className="sr-only">Vara Creations</span>
         </Link>
 
+        <div className="header-right" style={{ display: 'flex', alignItems: 'center', gap: 20 }}>
         {/* Desktop nav */}
         <nav
           className="nav-desktop"
           style={{ display: 'flex', alignItems: 'center', gap: 28, fontSize: 15, fontWeight: 500 }}
         >
-          <Link href="/#services" className="nav-link">Services</Link>
-          <Link href="/#how" className="nav-link">How it works</Link>
-          <Link href="/#faq" className="nav-link">FAQ</Link>
+          <Link href={`${p}/#services`} className="nav-link">{t.services}</Link>
+          <Link href={`${p}/#how`} className="nav-link">{t.how}</Link>
+          <Link href={`${p}/#faq`} className="nav-link">{t.faq}</Link>
           {activePage === 'contact' ? (
             <span style={{ color: '#BE185D', borderBottom: '2px solid #BE185D', paddingBottom: 2 }}>
-              Contact
+              {t.contact}
             </span>
           ) : (
-            <Link href="/contact" className="nav-link">Contact</Link>
+            <Link href={`${p}/contact`} className="nav-link">{t.contact}</Link>
           )}
           <a href={WA_HREF} target="_blank" rel="noopener noreferrer" className="header-wa-btn">
             <WaIcon />
-            WhatsApp
+            {t.whatsapp}
           </a>
         </nav>
+
+        <LangToggle lang={lang} activePage={activePage} />
 
         {/* Mobile hamburger */}
         <button
           className="mobile-menu-btn"
           onClick={() => setOpen((o) => !o)}
-          aria-label={open ? 'Close menu' : 'Open menu'}
+          aria-label={open ? t.close : t.open}
           aria-expanded={open}
         >
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
@@ -88,17 +120,18 @@ export default function Header({ activePage }: { activePage?: 'contact' }) {
             )}
           </svg>
         </button>
+        </div>
       </div>
 
       {/* Mobile nav drawer */}
-      <nav className={`mobile-nav${open ? ' open' : ''}`} aria-label="Mobile navigation">
-        <Link href="/#services" className="nav-link" onClick={close}>Services</Link>
-        <Link href="/#how" className="nav-link" onClick={close}>How it works</Link>
-        <Link href="/#faq" className="nav-link" onClick={close}>FAQ</Link>
+      <nav className={`mobile-nav${open ? ' open' : ''}`} aria-label={t.mobileLabel}>
+        <Link href={`${p}/#services`} className="nav-link" onClick={close}>{t.services}</Link>
+        <Link href={`${p}/#how`} className="nav-link" onClick={close}>{t.how}</Link>
+        <Link href={`${p}/#faq`} className="nav-link" onClick={close}>{t.faq}</Link>
         {activePage === 'contact' ? (
-          <span style={{ color: '#BE185D', fontWeight: 500 }}>Contact</span>
+          <span style={{ color: '#BE185D', fontWeight: 500 }}>{t.contact}</span>
         ) : (
-          <Link href="/contact" className="nav-link" onClick={close}>Contact</Link>
+          <Link href={`${p}/contact`} className="nav-link" onClick={close}>{t.contact}</Link>
         )}
         <a
           href={WA_HREF}
@@ -109,7 +142,7 @@ export default function Header({ activePage }: { activePage?: 'contact' }) {
           onClick={close}
         >
           <WaIcon />
-          WhatsApp
+          {t.whatsapp}
         </a>
       </nav>
     </header>

@@ -1,7 +1,9 @@
 import Link from 'next/link'
 import MadeInIndia from '@/components/MadeInIndia'
+import { copy, prefix, type Lang } from '@/lib/i18n'
 
-export default function FooterSlim() {
+export default function FooterSlim({ lang }: { lang: Lang }) {
+  const c = copy[lang]
   return (
     <footer style={{ background: '#412402', color: 'rgba(246,236,218,0.8)' }}>
       <div
@@ -24,13 +26,13 @@ export default function FooterSlim() {
           style={{ height: 44, width: 'auto', display: 'block' }}
         />
         <div style={{ fontSize: 13, color: 'rgba(246,236,218,0.5)' }}>
-          © 2026 Vara Creations · Stitched with love in Visakhapatnam
+          {c.footer.copyright}
           <div style={{ marginTop: 6, textAlign: 'center' }}>
-            <MadeInIndia color="#F0B84B" size={12} />
+            <MadeInIndia color="#F0B84B" size={12} label={c.madeInIndia} />
           </div>
         </div>
-        <Link href="/" style={{ color: '#F0B84B', textDecoration: 'none', fontSize: 14 }}>
-          ← Back to home
+        <Link href={prefix(lang) || '/'} style={{ color: '#F0B84B', textDecoration: 'none', fontSize: 14 }}>
+          {c.footer.back}
         </Link>
       </div>
     </footer>

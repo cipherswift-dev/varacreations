@@ -1,35 +1,18 @@
-import type { Metadata } from 'next'
-import { Cormorant_Garamond, Jost } from 'next/font/google'
-import './globals.css'
-import { SITE_LIVE } from '@/lib/site'
+import type { Lang } from '@/lib/i18n'
+import { copy } from '@/lib/i18n'
 
-const cormorant = Cormorant_Garamond({
-  subsets: ['latin'],
-  weight: ['500', '600', '700'],
-  style: ['normal', 'italic'],
-  variable: '--font-cormorant',
-  display: 'swap',
-})
-
-const jost = Jost({
-  subsets: ['latin'],
-  weight: ['300', '400', '500', '600'],
-  variable: '--font-jost',
-  display: 'swap',
-})
-
-export const metadata: Metadata = {
-  title: 'Vara Creations — Home Embroidery Studio, Visakhapatnam',
-  description:
-    'Custom embroidery for saree blouses, school uniforms, team wear and personalised gifts. Family-run studio in Visakhapatnam, Andhra Pradesh.',
-  icons: { icon: '/logo-icon.svg' },
-  // Keep search engines away until launch (NEXT_PUBLIC_SITE_LIVE=true).
-  robots: SITE_LIVE ? undefined : { index: false, follow: false },
-}
-
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+// Shared <html>/<body> for both language trees (each has its own root layout so <html lang> is correct).
+export default function RootShell({
+  lang,
+  fontClass,
+  children,
+}: {
+  lang: Lang
+  fontClass: string
+  children: React.ReactNode
+}) {
   return (
-    <html lang="en" className={`${cormorant.variable} ${jost.variable}`}>
+    <html lang={copy[lang].htmlLang} className={fontClass}>
       <body>
         {/* Shared SVG gradient defs — referenced by inline lotus SVGs site-wide */}
         <svg

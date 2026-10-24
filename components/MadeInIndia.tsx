@@ -1,5 +1,13 @@
 // "Made in India" badge with a small tricolour flag.
-export default function MadeInIndia({ color = '#6B5335', size = 13 }: { color?: string; size?: number }) {
+export default function MadeInIndia({
+  color = '#6B5335',
+  size = 13,
+  label = 'Made in India',
+}: {
+  color?: string
+  size?: number
+  label?: string
+}) {
   return (
     <span
       style={{
@@ -19,7 +27,7 @@ export default function MadeInIndia({ color = '#6B5335', size = 13 }: { color?: 
         <path d="M.5 10.8h23V13a2.5 2.5 0 0 1-2.5 2.5H3A2.5 2.5 0 0 1 .5 13Z" fill="#138808" />
         <circle cx="12" cy="8" r="1.9" fill="none" stroke="#000080" strokeWidth="0.9" />
       </svg>
-      Made in India
+      {label}
     </span>
   )
 }

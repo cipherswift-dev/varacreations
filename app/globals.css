@@ -352,3 +352,42 @@ details summary::-webkit-details-marker { display: none; }
 @media (max-width: 768px) {
   .hero-bg { background-image: url(/hero-mobile.webp); }
 }
+
+/* ── Language toggle (EN | అ) ── */
+.lang-toggle {
+  display: inline-flex;
+  border: 1.5px solid #412402;
+  border-radius: 999px;
+  overflow: hidden;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1;
+}
+.lang-toggle a {
+  padding: 8px 13px;
+  color: #412402;
+  text-decoration: none;
+  transition: background 0.15s, color 0.15s;
+}
+.lang-toggle a:hover { background: rgba(65,36,2,0.08); }
+.lang-toggle a.active { background: #412402; color: #FBF8F2; }
+
+/* ── Telugu (<html lang="te">) ──
+   Telugu conjuncts break with letter-spacing and need taller lines; text runs ~30% longer. */
+html[lang="te"] *:not(.logo-text) { letter-spacing: normal !important; }
+html[lang="te"] h1, html[lang="te"] h2, html[lang="te"] h3 { line-height: 1.35 !important; }
+html[lang="te"] .hero-h1 { font-size: 46px !important; }
+html[lang="te"] h2 { font-size: 34px !important; }
+html[lang="te"] .contact-h1 { font-size: 38px !important; }
+html[lang="te"] .work-card-title { font-size: 22px; }
+html[lang="te"] p, html[lang="te"] summary, html[lang="te"] label { line-height: 1.85; }
+@media (max-width: 768px) {
+  html[lang="te"] .hero-h1 { font-size: 32px !important; }
+  html[lang="te"] h2 { font-size: 26px !important; }
+  html[lang="te"] .contact-h1 { font-size: 28px !important; }
+}
+@media (max-width: 480px) {
+  .header-right { gap: 10px !important; }
+  .lang-toggle a { padding: 7px 10px; }
+}
+.lang-toggle a[lang="te"] { font-size: 16px; }

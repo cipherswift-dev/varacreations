@@ -4,67 +4,19 @@ import Footer from '@/components/Footer'
 import LotusIcon from '@/components/LotusIcon'
 import MadeInIndia from '@/components/MadeInIndia'
 import WorkCarousel from '@/components/WorkCarousel'
+import { copy, prefix, waHref, type Lang } from '@/lib/i18n'
 
-const WA_HREF =
-  'https://wa.me/919966906773?text=Hi%20Vara%20Creations!%20I%27d%20like%20a%20quote%20for%20embroidery.'
-
-const SERVICES = [
-  {
-    gradient: 'linear-gradient(90deg,#BE185D,#EC4899)',
-    title: 'Saree blouse embroidery',
-    body: 'Our speciality. Aari and maggam-style work, zari, beads, mirror and threadwork — matched to your saree, for weddings, festivals and everyday elegance.',
-    cls: 'service-card service-card-mag',
-  },
-  {
-    gradient: 'linear-gradient(90deg,#1D4ED8,#38BDF8)',
-    title: 'School uniforms & shirts',
-    body: 'Names, class labels and school logos stitched neatly on shirts — durable embroidery that survives daily wear and every wash.',
-    cls: 'service-card service-card-blue',
-  },
-  {
-    gradient: 'linear-gradient(90deg,#0F766E,#2DD4BF)',
-    title: 'Team & group orders',
-    body: 'Sports teams, event crews, office staff — one logo across many garments, with consistent placement and colour on every piece.',
-    cls: 'service-card service-card-teal',
-  },
-  {
-    gradient: 'linear-gradient(90deg,#F97316,#FB923C)',
-    title: 'Personalised gifts',
-    body: 'Monograms and names on kerchiefs, towels, baby wraps and keepsakes — small stitches that make a gift feel truly personal.',
-    cls: 'service-card service-card-ora',
-  },
-  {
-    gradient: 'linear-gradient(90deg,#EF9F27,#FACC15)',
-    title: 'All ages, all styles',
-    body: "From a child's frock to a grandmother's shawl — playful motifs, florals, traditional patterns or clean minimal lines, sized for anyone.",
-    cls: 'service-card service-card-gold',
-  },
-  {
-    gradient: 'linear-gradient(90deg,#5B21B6,#8B2FD6)',
-    title: 'Classes & workshops',
-    body: 'Learn the craft with us — beginner-friendly sessions at our home studio for anyone who wants to pick up needle and thread.',
-    cls: 'service-card service-card-pur',
-  },
+// Visual styling for each service card, in the same order as copy[lang].services.items.
+const SERVICE_STYLES = [
+  { gradient: 'linear-gradient(90deg,#BE185D,#EC4899)', cls: 'service-card service-card-mag' },
+  { gradient: 'linear-gradient(90deg,#1D4ED8,#38BDF8)', cls: 'service-card service-card-blue' },
+  { gradient: 'linear-gradient(90deg,#0F766E,#2DD4BF)', cls: 'service-card service-card-teal' },
+  { gradient: 'linear-gradient(90deg,#F97316,#FB923C)', cls: 'service-card service-card-ora' },
+  { gradient: 'linear-gradient(90deg,#EF9F27,#FACC15)', cls: 'service-card service-card-gold' },
+  { gradient: 'linear-gradient(90deg,#5B21B6,#8B2FD6)', cls: 'service-card service-card-pur' },
 ]
 
-const HOW = [
-  {
-    n: '1',
-    title: 'Share your design',
-    body: "Send a photo, sketch or just an idea on WhatsApp — along with the garment and fabric. We'll suggest designs and give you a clear quote.",
-  },
-  {
-    n: '2',
-    title: 'We stitch it',
-    body: "Your piece is embroidered at our home studio with care — we share progress photos so you always know how it's coming along.",
-  },
-  {
-    n: '3',
-    title: 'Pickup or delivery',
-    body: "Pickup by appointment — or we'll courier it anywhere in India, safely packed.",
-  },
-]
-
+// Testimonials stay in the customer's own words (English) on every language page.
 const TESTIMONIALS = [
   {
     quote:
@@ -86,37 +38,13 @@ const TESTIMONIALS = [
   },
 ]
 
-const FAQS = [
-  {
-    q: 'How much does embroidery cost?',
-    a: "It depends on the design, garment category and material — a simple name costs far less than full maggam work. Send us a photo of your garment and the design you like on WhatsApp, and we'll give you a clear quote within a day. No obligation.",
-  },
-  {
-    q: 'How long does an order take?',
-    a: "Simple name or logo work is usually ready in 2–3 days. Detailed blouse embroidery takes about 1–2 weeks depending on the design. Group orders depend on quantity — tell us your deadline and we'll confirm before starting.",
-  },
-  {
-    q: 'Is there a minimum order?',
-    a: 'No. We happily take single pieces — one blouse, one shirt, one gift. For team and group orders, larger quantities simply get a better per-piece rate.',
-  },
-  {
-    q: 'What fabrics can you embroider?',
-    a: "Cotton, silk, pattu, georgette, linen, school-uniform poly-cotton and most blends. If you're unsure, send a photo or bring the garment over — we'll check the weave and suggest the right stitch and backing.",
-  },
-  {
-    q: 'Do you provide the garment too?',
-    a: 'Usually you bring your own garment or fabric and we do the embroidery. For group orders we can help source matching shirts or jerseys — ask us for options.',
-  },
-  {
-    q: 'Can I pick a design from the internet?',
-    a: "Yes! Share any reference picture — we'll tell you honestly what will translate well into thread, and adapt it to your garment, colours and budget.",
-  },
-]
-
-export default function HomePage() {
+export default function HomePage({ lang }: { lang: Lang }) {
+  const c = copy[lang]
+  const p = prefix(lang)
+  const WA_HREF = waHref(lang)
   return (
     <div style={{ fontFamily: 'var(--font-jost), system-ui, sans-serif', color: '#412402', background: '#FBF8F2' }}>
-      <Header />
+      <Header lang={lang} />
 
       {/* ══ HERO ══ */}
       <section id="top" style={{ position: 'relative', overflow: 'hidden', background: '#FBF8F2' }}>
@@ -147,10 +75,10 @@ export default function HomePage() {
               }}
             >
               <LotusIcon size={24} />
-              Home embroidery studio · Visakhapatnam
+              {c.hero.badge}
             </div>
             <div style={{ marginTop: 14 }}>
-              <MadeInIndia />
+              <MadeInIndia label={c.madeInIndia} />
             </div>
 
             <h1
@@ -163,38 +91,36 @@ export default function HomePage() {
                 margin: '26px 0 20px',
               }}
             >
-              Every stitch,{' '}
-              <em style={{ fontStyle: 'italic', color: '#BE185D' }}>made with love</em> from our
-              home to yours.
+              {c.hero.h1a}
+              <em style={{ fontStyle: 'italic', color: '#BE185D' }}>{c.hero.h1em}</em>
+              {c.hero.h1b}
             </h1>
 
             <p style={{ fontSize: 18, lineHeight: 1.7, color: '#6B5335', margin: '0 0 34px', maxWidth: '50ch' }}>
-              Custom embroidery for saree blouses, school uniforms, team wear and personalised
-              gifts — for all age groups and every level of detail, from a simple name to full
-              maggam work. A family-run studio, one order at a time.
+              {c.hero.body}
             </p>
 
             <div style={{ display: 'flex', gap: 14, flexWrap: 'wrap' }}>
-              <Link href="/contact" className="btn-primary">
-                Get a free quote
+              <Link href={`${p}/contact`} className="btn-primary">
+                {c.hero.quote}
               </Link>
               <a href="#services" className="btn-outline">
-                See what we stitch
+                {c.hero.see}
               </a>
             </div>
 
             <div style={{ display: 'flex', gap: 32, marginTop: 40, fontSize: 14, color: '#854F0B', flexWrap: 'wrap' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
                 <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#EF9F27', display: 'inline-block' }} />
-                No minimum order
+                {c.hero.points[0]}
               </div>
               <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
                 <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#EC4899', display: 'inline-block' }} />
-                Hand &amp; machine work
+                {c.hero.points[1]}
               </div>
               <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
                 <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#8B2FD6', display: 'inline-block' }} />
-                Pickup or courier
+                {c.hero.points[2]}
               </div>
             </div>
           </div>
@@ -209,32 +135,31 @@ export default function HomePage() {
         <div style={{ maxWidth: 1160, margin: '0 auto', padding: '72px 28px' }}>
           <div style={{ textAlign: 'center', maxWidth: 640, margin: '0 auto 52px' }}>
             <div style={{ fontSize: 13, letterSpacing: 3, textTransform: 'uppercase', color: '#854F0B', marginBottom: 12 }}>
-              What we stitch
+              {c.services.eyebrow}
             </div>
             <h2
               className="services-h2"
               style={{ fontFamily: 'var(--font-cormorant), serif', fontSize: 42, fontWeight: 600, margin: '0 0 14px' }}
             >
-              One studio, every kind of embroidery
+              {c.services.title}
             </h2>
             <p style={{ color: '#6B5335', fontSize: 16, lineHeight: 1.7, margin: 0 }}>
-              Simple or intricate, one piece or fifty — tell us what you have in mind and we&apos;ll
-              suggest the right threadwork, placement and finish.
+              {c.services.intro}
             </p>
           </div>
 
           <div className="services-grid">
-            {SERVICES.map((s) => (
-              <div key={s.title} className={s.cls}>
+            {c.services.items.map((item, i) => (
+              <div key={item.title} className={SERVICE_STYLES[i].cls}>
                 <div
-                  style={{ width: 42, height: 4, borderRadius: 2, background: s.gradient, marginBottom: 18 }}
+                  style={{ width: 42, height: 4, borderRadius: 2, background: SERVICE_STYLES[i].gradient, marginBottom: 18 }}
                 />
                 <h3
                   style={{ fontFamily: 'var(--font-cormorant), serif', fontSize: 24, fontWeight: 700, margin: '0 0 10px' }}
                 >
-                  {s.title}
+                  {item.title}
                 </h3>
-                <p style={{ fontSize: 14.5, lineHeight: 1.7, color: '#6B5335', margin: 0 }}>{s.body}</p>
+                <p style={{ fontSize: 14.5, lineHeight: 1.7, color: '#6B5335', margin: 0 }}>{item.body}</p>
               </div>
             ))}
           </div>
@@ -255,21 +180,21 @@ export default function HomePage() {
         >
           <div>
             <div style={{ fontSize: 13, letterSpacing: 3, textTransform: 'uppercase', color: '#854F0B', marginBottom: 12 }}>
-              What we do
+              {c.work.eyebrow}
             </div>
             <h2
               className="work-h2"
               style={{ fontFamily: 'var(--font-cormorant), serif', fontSize: 42, fontWeight: 600, margin: 0 }}
             >
-              What we stitch, start to finish
+              {c.work.title}
             </h2>
           </div>
           <div style={{ fontSize: 14, color: '#9C8F76', maxWidth: 260, textAlign: 'right' }}>
-            From a single blouse to a hundred uniforms — here is what we deliver.
+            {c.work.blurb}
           </div>
         </div>
 
-        <WorkCarousel />
+        <WorkCarousel lang={lang} />
       </section>
 
       {/* ══ HOW IT WORKS ══ */}
@@ -277,20 +202,20 @@ export default function HomePage() {
         <div style={{ maxWidth: 1160, margin: '0 auto', padding: '76px 28px' }}>
           <div style={{ textAlign: 'center', marginBottom: 56 }}>
             <div style={{ fontSize: 13, letterSpacing: 3, textTransform: 'uppercase', color: '#F0B84B', marginBottom: 12 }}>
-              How it works
+              {c.how.eyebrow}
             </div>
             <h2
               className="how-h2"
               style={{ fontFamily: 'var(--font-cormorant), serif', fontSize: 42, fontWeight: 600, margin: 0 }}
             >
-              Three simple steps
+              {c.how.title}
             </h2>
           </div>
 
           <div className="how-grid">
-            {HOW.map((step) => (
+            {c.how.steps.map((step, i) => (
               <div
-                key={step.n}
+                key={i}
                 style={{ border: '1px solid rgba(246,236,218,0.18)', borderRadius: 18, padding: 32 }}
               >
                 <div
@@ -302,7 +227,7 @@ export default function HomePage() {
                     lineHeight: 1,
                   }}
                 >
-                  {step.n}
+                  {i + 1}
                 </div>
                 <h3
                   style={{
@@ -327,13 +252,13 @@ export default function HomePage() {
       <section id="testimonials" style={{ maxWidth: 1160, margin: '0 auto', padding: '76px 28px' }}>
         <div style={{ textAlign: 'center', marginBottom: 48 }}>
           <div style={{ fontSize: 13, letterSpacing: 3, textTransform: 'uppercase', color: '#854F0B', marginBottom: 12 }}>
-            Kind words
+            {c.testimonials.eyebrow}
           </div>
           <h2
             className="testimonials-h2"
             style={{ fontFamily: 'var(--font-cormorant), serif', fontSize: 42, fontWeight: 600, margin: 0 }}
           >
-            From our first customers
+            {c.testimonials.title}
           </h2>
         </div>
 
@@ -354,6 +279,7 @@ export default function HomePage() {
             >
               <div style={{ color: '#EF9F27', fontSize: 18, letterSpacing: 3 }}>★★★★★</div>
               <blockquote
+                lang="en"
                 style={{
                   margin: 0,
                   fontFamily: 'var(--font-cormorant), serif',
@@ -364,7 +290,7 @@ export default function HomePage() {
               >
                 &ldquo;{t.quote}&rdquo;
               </blockquote>
-              <figcaption style={{ fontSize: 14, color: '#854F0B', fontWeight: 500 }}>
+              <figcaption lang="en" style={{ fontSize: 14, color: '#854F0B', fontWeight: 500 }}>
                 {t.name} · {t.what}
               </figcaption>
             </figure>
@@ -372,7 +298,7 @@ export default function HomePage() {
         </div>
 
         <p style={{ textAlign: 'center', fontSize: 13, color: '#B0A487', marginTop: 22 }}>
-          Sample reviews — we&apos;ll replace these with real customer words as they come in.
+          {c.testimonials.note}
         </p>
       </section>
 
@@ -381,18 +307,18 @@ export default function HomePage() {
         <div style={{ maxWidth: 820, margin: '0 auto', padding: '76px 28px' }}>
           <div style={{ textAlign: 'center', marginBottom: 44 }}>
             <div style={{ fontSize: 13, letterSpacing: 3, textTransform: 'uppercase', color: '#854F0B', marginBottom: 12 }}>
-              Questions
+              {c.faq.eyebrow}
             </div>
             <h2
               className="faq-h2"
               style={{ fontFamily: 'var(--font-cormorant), serif', fontSize: 42, fontWeight: 600, margin: 0 }}
             >
-              Frequently asked
+              {c.faq.title}
             </h2>
           </div>
 
           <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
-            {FAQS.map((f, i) => (
+            {c.faq.items.map((f, i) => (
               <details key={i}>
                 <summary>{f.q}</summary>
                 <p style={{ margin: '14px 0 4px', fontSize: 15, lineHeight: 1.7, color: '#6B5335' }}>{f.a}</p>
@@ -409,23 +335,22 @@ export default function HomePage() {
           className="cta-h2"
           style={{ fontFamily: 'var(--font-cormorant), serif', fontSize: 44, fontWeight: 600, margin: '0 0 16px' }}
         >
-          Have a garment waiting for beautiful stitches?
+          {c.cta.title}
         </h2>
         <p style={{ color: '#6B5335', fontSize: 17, margin: '0 0 32px' }}>
-          Pricing depends on the design, category and material — send us a photo and we&apos;ll quote
-          within a day.
+          {c.cta.body}
         </p>
         <div style={{ display: 'flex', gap: 14, justifyContent: 'center', flexWrap: 'wrap' }}>
-          <Link href="/contact" className="btn-primary" style={{ padding: '15px 34px' }}>
-            Request a quote
+          <Link href={`${p}/contact`} className="btn-primary" style={{ padding: '15px 34px' }}>
+            {c.cta.quote}
           </Link>
           <a href={WA_HREF} target="_blank" rel="noopener noreferrer" className="btn-outline" style={{ padding: '15px 34px' }}>
-            Chat on WhatsApp
+            {c.cta.whatsapp}
           </a>
         </div>
       </section>
 
-      <Footer />
+      <Footer lang={lang} />
     </div>
   )
 }
