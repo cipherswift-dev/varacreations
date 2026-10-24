@@ -23,7 +23,7 @@ export type Copy = {
   contactMetaTitle: string
   waDefault: string
   madeInIndia: string
-  nav: { services: string; how: string; faq: string; contact: string; whatsapp: string; open: string; close: string; mobileLabel: string; langLabel: string }
+  nav: { services: string; how: string; faq: string; contact: string; whatsapp: string; open: string; close: string; mobileLabel: string; langLabel: string; themeDark: string; themeLight: string }
   hero: { badge: string; h1a: string; h1em: string; h1b: string; body: string; quote: string; see: string; points: [string, string, string] }
   services: { eyebrow: string; title: string; intro: string; items: Item[] }
   work: { eyebrow: string; title: string; blurb: string; prev: string; next: string; cards: Card[] }
@@ -53,6 +53,7 @@ const en: Copy = {
   nav: {
     services: 'Services', how: 'How it works', faq: 'FAQ', contact: 'Contact', whatsapp: 'WhatsApp',
     open: 'Open menu', close: 'Close menu', mobileLabel: 'Mobile navigation', langLabel: 'Language',
+    themeDark: 'Switch to dark theme', themeLight: 'Switch to light theme',
   },
   hero: {
     badge: 'Home embroidery studio · Visakhapatnam',
@@ -169,6 +170,7 @@ const te: Copy = {
   nav: {
     services: 'సేవలు', how: 'ఎలా పని చేస్తుంది', faq: 'ప్రశ్నలు', contact: 'సంప్రదించండి', whatsapp: 'వాట్సాప్',
     open: 'మెనూ తెరవండి', close: 'మెనూ మూసివేయండి', mobileLabel: 'మొబైల్ నావిగేషన్', langLabel: 'భాష',
+    themeDark: 'డార్క్ థీమ్‌కి మార్చండి', themeLight: 'లైట్ థీమ్‌కి మార్చండి',
   },
   hero: {
     badge: 'ఇంటి ఎంబ్రాయిడరీ స్టూడియో · విశాఖపట్నం',

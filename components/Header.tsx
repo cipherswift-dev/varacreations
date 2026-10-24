@@ -1,6 +1,7 @@
 'use client'
 import { useState } from 'react'
 import Link from 'next/link'
+import ThemeToggle from '@/components/ThemeToggle'
 import { copy, prefix, waHref, type Lang } from '@/lib/i18n'
 
 const WaIcon = () => (
@@ -31,7 +32,7 @@ function LangToggle({ lang, activePage }: { lang: Lang; activePage?: 'contact' }
         aria-current={lang === 'te' ? 'true' : undefined}
         title="తెలుగు"
       >
-        అ
+        త
       </Link>
     </div>
   )
@@ -50,13 +51,14 @@ export default function Header({ lang, activePage }: { lang: Lang; activePage?: 
         position: 'sticky',
         top: 0,
         zIndex: 50,
-        background: 'rgba(251,248,242,0.94)',
+        background: 'rgba(var(--bg-rgb),0.94)',
         backdropFilter: 'blur(8px)',
         WebkitBackdropFilter: 'blur(8px)',
-        borderBottom: '1px solid #EAE3D3',
+        borderBottom: '1px solid var(--border)',
       }}
     >
       <div
+        className="header-inner"
         style={{
           maxWidth: 1160,
           margin: '0 auto',
@@ -69,12 +71,12 @@ export default function Header({ lang, activePage }: { lang: Lang; activePage?: 
       >
         <Link href={p || '/'} style={{ display: 'flex', alignItems: 'center', gap: 10, textDecoration: 'none' }}>
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/logo-icon.svg" alt="" aria-hidden="true" style={{ height: 52, width: 'auto', display: 'block' }} />
-          <div style={{ borderLeft: '1px solid rgba(65,36,2,0.2)', paddingLeft: 11 }}>
-            <div className="logo-text" style={{ fontFamily: 'Georgia,"Times New Roman",serif', fontSize: 26, fontWeight: 700, letterSpacing: '1.5px', color: '#412402', lineHeight: 1 }}>
+          <img className="logo-img" src="/logo-icon.svg" alt="" aria-hidden="true" style={{ height: 52, width: 'auto', display: 'block' }} />
+          <div style={{ borderLeft: '1px solid rgba(var(--ink-rgb),0.2)', paddingLeft: 11 }}>
+            <div className="logo-text" style={{ fontFamily: 'Georgia,"Times New Roman",serif', fontSize: 26, fontWeight: 700, letterSpacing: '1.5px', color: 'var(--ink)', lineHeight: 1 }}>
               VARA
             </div>
-            <div className="logo-text" style={{ fontFamily: 'Helvetica,Arial,sans-serif', fontSize: 10, fontWeight: 500, letterSpacing: '5px', color: '#854F0B', textTransform: 'uppercase', lineHeight: 1, marginTop: 5 }}>
+            <div className="logo-text" style={{ fontFamily: 'Helvetica,Arial,sans-serif', fontSize: 10, fontWeight: 500, letterSpacing: '5px', color: 'var(--eyebrow)', textTransform: 'uppercase', lineHeight: 1, marginTop: 5 }}>
               CREATIONS
             </div>
           </div>
@@ -91,7 +93,7 @@ export default function Header({ lang, activePage }: { lang: Lang; activePage?: 
           <Link href={`${p}/#how`} className="nav-link">{t.how}</Link>
           <Link href={`${p}/#faq`} className="nav-link">{t.faq}</Link>
           {activePage === 'contact' ? (
-            <span style={{ color: '#BE185D', borderBottom: '2px solid #BE185D', paddingBottom: 2 }}>
+            <span style={{ color: 'var(--brand)', borderBottom: '2px solid var(--brand)', paddingBottom: 2 }}>
               {t.contact}
             </span>
           ) : (
@@ -103,6 +105,7 @@ export default function Header({ lang, activePage }: { lang: Lang; activePage?: 
           </a>
         </nav>
 
+        <ThemeToggle labelDark={t.themeDark} labelLight={t.themeLight} />
         <LangToggle lang={lang} activePage={activePage} />
 
         {/* Mobile hamburger */}
@@ -129,7 +132,7 @@ export default function Header({ lang, activePage }: { lang: Lang; activePage?: 
         <Link href={`${p}/#how`} className="nav-link" onClick={close}>{t.how}</Link>
         <Link href={`${p}/#faq`} className="nav-link" onClick={close}>{t.faq}</Link>
         {activePage === 'contact' ? (
-          <span style={{ color: '#BE185D', fontWeight: 500 }}>{t.contact}</span>
+          <span style={{ color: 'var(--brand)', fontWeight: 500 }}>{t.contact}</span>
         ) : (
           <Link href={`${p}/contact`} className="nav-link" onClick={close}>{t.contact}</Link>
         )}

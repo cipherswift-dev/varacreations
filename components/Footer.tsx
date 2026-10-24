@@ -5,7 +5,7 @@ import { copy, prefix, PHONE_DISPLAY, type Lang } from '@/lib/i18n'
 export default function Footer({ lang }: { lang: Lang }) {
   const c = copy[lang]
   return (
-    <footer style={{ background: '#412402', color: 'rgba(246,236,218,0.8)' }}>
+    <footer style={{ background: 'var(--dark-bg)', color: 'rgba(246,236,218,0.8)' }}>
       <div
         className="footer-grid"
         style={{ maxWidth: 1160, margin: '0 auto', padding: '56px 28px 40px' }}

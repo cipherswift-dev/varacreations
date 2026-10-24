@@ -29,8 +29,8 @@ export default function ContactPage({ lang }: { lang: Lang }) {
     <div
       style={{
         fontFamily: 'var(--font-jost), system-ui, sans-serif',
-        color: '#412402',
-        background: '#FBF8F2',
+        color: 'var(--ink)',
+        background: 'var(--bg)',
         minHeight: '100vh',
         display: 'flex',
         flexDirection: 'column',
@@ -48,7 +48,7 @@ export default function ContactPage({ lang }: { lang: Lang }) {
               fontSize: 13,
               letterSpacing: 3,
               textTransform: 'uppercase',
-              color: '#854F0B',
+              color: 'var(--eyebrow)',
               marginBottom: 12,
             }}
           >
@@ -66,7 +66,7 @@ export default function ContactPage({ lang }: { lang: Lang }) {
           >
             {c.h1}
           </h1>
-          <p style={{ fontSize: 17, lineHeight: 1.7, color: '#6B5335', margin: 0 }}>
+          <p style={{ fontSize: 17, lineHeight: 1.7, color: 'var(--ink-2)', margin: 0 }}>
             {c.intro}
           </p>
         </div>
@@ -100,7 +100,7 @@ export default function ContactPage({ lang }: { lang: Lang }) {
               </div>
               <div>
                 <div style={{ fontWeight: 600, fontSize: 16 }}>{c.waTitle}</div>
-                <div style={{ fontSize: 14, color: '#6B5335' }}>
+                <div style={{ fontSize: 14, color: 'var(--ink-2)' }}>
                   {c.waSub}
                 </div>
               </div>
@@ -126,13 +126,13 @@ export default function ContactPage({ lang }: { lang: Lang }) {
               </div>
               <div>
                 <div style={{ fontWeight: 600, fontSize: 16 }}>{c.callTitle}</div>
-                <div style={{ fontSize: 14, color: '#6B5335' }}>{c.callSub}</div>
+                <div style={{ fontSize: 14, color: 'var(--ink-2)' }}>{c.callSub}</div>
               </div>
             </a>
           </div>
 
           {/* Quote form */}
-          <div style={{ border: '1px solid #EAE3D3', borderRadius: 20, background: '#fff', padding: 36 }}>
+          <div style={{ border: '1px solid var(--border)', borderRadius: 20, background: 'var(--surface)', padding: 36 }}>
             <h2
               style={{
                 fontFamily: 'var(--font-cormorant), serif',
@@ -143,14 +143,14 @@ export default function ContactPage({ lang }: { lang: Lang }) {
             >
               {c.formTitle}
             </h2>
-            <p style={{ fontSize: 14, color: '#6B5335', margin: '0 0 26px' }}>
+            <p style={{ fontSize: 14, color: 'var(--ink-2)', margin: '0 0 26px' }}>
               {c.formIntro}
             </p>
 
             <form onSubmit={sendWhatsApp}>
               <div className="form-grid">
                 <label
-                  style={{ display: 'flex', flexDirection: 'column', gap: 7, fontSize: 13.5, fontWeight: 500, color: '#6B5335' }}
+                  style={{ display: 'flex', flexDirection: 'column', gap: 7, fontSize: 13.5, fontWeight: 500, color: 'var(--ink-2)' }}
                 >
                   {c.name}
                   <input
@@ -162,7 +162,7 @@ export default function ContactPage({ lang }: { lang: Lang }) {
                 </label>
 
                 <label
-                  style={{ display: 'flex', flexDirection: 'column', gap: 7, fontSize: 13.5, fontWeight: 500, color: '#6B5335' }}
+                  style={{ display: 'flex', flexDirection: 'column', gap: 7, fontSize: 13.5, fontWeight: 500, color: 'var(--ink-2)' }}
                 >
                   {c.phone}
                   <input
@@ -181,7 +181,7 @@ export default function ContactPage({ lang }: { lang: Lang }) {
                     gap: 7,
                     fontSize: 13.5,
                     fontWeight: 500,
-                    color: '#6B5335',
+                    color: 'var(--ink-2)',
                   }}
                 >
                   {c.service}
@@ -200,7 +200,7 @@ export default function ContactPage({ lang }: { lang: Lang }) {
                     gap: 7,
                     fontSize: 13.5,
                     fontWeight: 500,
-                    color: '#6B5335',
+                    color: 'var(--ink-2)',
                   }}
                 >
                   {c.details}

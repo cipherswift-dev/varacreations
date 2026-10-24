@@ -5,7 +5,7 @@ import { copy, prefix, type Lang } from '@/lib/i18n'
 export default function FooterSlim({ lang }: { lang: Lang }) {
   const c = copy[lang]
   return (
-    <footer style={{ background: '#412402', color: 'rgba(246,236,218,0.8)' }}>
+    <footer style={{ background: 'var(--dark-bg)', color: 'rgba(246,236,218,0.8)' }}>
       <div
         style={{
           borderTop: '1px solid rgba(246,236,218,0.15)',

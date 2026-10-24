@@ -12,7 +12,15 @@ export default function RootShell({
   children: React.ReactNode
 }) {
   return (
-    <html lang={copy[lang].htmlLang} className={fontClass}>
+    <html lang={copy[lang].htmlLang} className={fontClass} suppressHydrationWarning>
+      <head>
+        {/* Apply the saved theme before first paint (default: light). */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: "try{var t=localStorage.getItem('theme');if(t==='dark')document.documentElement.dataset.theme='dark'}catch(e){}",
+          }}
+        />
+      </head>
       <body>
         {/* Shared SVG gradient defs — referenced by inline lotus SVGs site-wide */}
         <svg

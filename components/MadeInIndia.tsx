@@ -1,6 +1,6 @@
 // "Made in India" badge with a small tricolour flag.
 export default function MadeInIndia({
-  color = '#6B5335',
+  color = 'var(--ink-2)',
   size = 13,
   label = 'Made in India',
 }: {

@@ -43,11 +43,11 @@ export default function HomePage({ lang }: { lang: Lang }) {
   const p = prefix(lang)
   const WA_HREF = waHref(lang)
   return (
-    <div style={{ fontFamily: 'var(--font-jost), system-ui, sans-serif', color: '#412402', background: '#FBF8F2' }}>
+    <div style={{ fontFamily: 'var(--font-jost), system-ui, sans-serif', color: 'var(--ink)', background: 'var(--bg)' }}>
       <Header lang={lang} />
 
       {/* ══ HERO ══ */}
-      <section id="top" style={{ position: 'relative', overflow: 'hidden', background: '#FBF8F2' }}>
+      <section id="top" style={{ position: 'relative', overflow: 'hidden', background: 'var(--bg)' }}>
         {/* Background image */}
         <div
           className="hero-bg"
@@ -64,14 +64,14 @@ export default function HomePage({ lang }: { lang: Lang }) {
                 display: 'inline-flex',
                 alignItems: 'center',
                 gap: 10,
-                border: '1px solid #E4D9C2',
+                border: '1px solid var(--border-2)',
                 borderRadius: 999,
                 padding: '7px 16px',
                 fontSize: 13,
                 letterSpacing: 2.5,
                 textTransform: 'uppercase',
-                color: '#854F0B',
-                background: '#fff',
+                color: 'var(--eyebrow)',
+                background: 'var(--surface)',
               }}
             >
               <LotusIcon size={24} />
@@ -92,11 +92,11 @@ export default function HomePage({ lang }: { lang: Lang }) {
               }}
             >
               {c.hero.h1a}
-              <em style={{ fontStyle: 'italic', color: '#BE185D' }}>{c.hero.h1em}</em>
+              <em style={{ fontStyle: 'italic', color: 'var(--brand)' }}>{c.hero.h1em}</em>
               {c.hero.h1b}
             </h1>
 
-            <p style={{ fontSize: 18, lineHeight: 1.7, color: '#6B5335', margin: '0 0 34px', maxWidth: '50ch' }}>
+            <p style={{ fontSize: 18, lineHeight: 1.7, color: 'var(--ink-2)', margin: '0 0 34px', maxWidth: '50ch' }}>
               {c.hero.body}
             </p>
 
@@ -109,7 +109,7 @@ export default function HomePage({ lang }: { lang: Lang }) {
               </a>
             </div>
 
-            <div style={{ display: 'flex', gap: 32, marginTop: 40, fontSize: 14, color: '#854F0B', flexWrap: 'wrap' }}>
+            <div style={{ display: 'flex', gap: 32, marginTop: 40, fontSize: 14, color: 'var(--eyebrow)', flexWrap: 'wrap' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
                 <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#EF9F27', display: 'inline-block' }} />
                 {c.hero.points[0]}
@@ -130,11 +130,11 @@ export default function HomePage({ lang }: { lang: Lang }) {
       {/* ══ SERVICES ══ */}
       <section
         id="services"
-        style={{ background: '#fff', borderTop: '1px solid #EAE3D3', borderBottom: '1px solid #EAE3D3' }}
+        style={{ background: 'var(--surface)', borderTop: '1px solid var(--border)', borderBottom: '1px solid var(--border)' }}
       >
         <div style={{ maxWidth: 1160, margin: '0 auto', padding: '72px 28px' }}>
           <div style={{ textAlign: 'center', maxWidth: 640, margin: '0 auto 52px' }}>
-            <div style={{ fontSize: 13, letterSpacing: 3, textTransform: 'uppercase', color: '#854F0B', marginBottom: 12 }}>
+            <div style={{ fontSize: 13, letterSpacing: 3, textTransform: 'uppercase', color: 'var(--eyebrow)', marginBottom: 12 }}>
               {c.services.eyebrow}
             </div>
             <h2
@@ -143,7 +143,7 @@ export default function HomePage({ lang }: { lang: Lang }) {
             >
               {c.services.title}
             </h2>
-            <p style={{ color: '#6B5335', fontSize: 16, lineHeight: 1.7, margin: 0 }}>
+            <p style={{ color: 'var(--ink-2)', fontSize: 16, lineHeight: 1.7, margin: 0 }}>
               {c.services.intro}
             </p>
           </div>
@@ -159,7 +159,7 @@ export default function HomePage({ lang }: { lang: Lang }) {
                 >
                   {item.title}
                 </h3>
-                <p style={{ fontSize: 14.5, lineHeight: 1.7, color: '#6B5335', margin: 0 }}>{item.body}</p>
+                <p style={{ fontSize: 14.5, lineHeight: 1.7, color: 'var(--ink-2)', margin: 0 }}>{item.body}</p>
               </div>
             ))}
           </div>
@@ -179,7 +179,7 @@ export default function HomePage({ lang }: { lang: Lang }) {
           }}
         >
           <div>
-            <div style={{ fontSize: 13, letterSpacing: 3, textTransform: 'uppercase', color: '#854F0B', marginBottom: 12 }}>
+            <div style={{ fontSize: 13, letterSpacing: 3, textTransform: 'uppercase', color: 'var(--eyebrow)', marginBottom: 12 }}>
               {c.work.eyebrow}
             </div>
             <h2
@@ -198,7 +198,7 @@ export default function HomePage({ lang }: { lang: Lang }) {
       </section>
 
       {/* ══ HOW IT WORKS ══ */}
-      <section id="how" style={{ background: '#412402', color: '#F6ECDA' }}>
+      <section id="how" style={{ background: 'var(--dark-bg)', color: '#F6ECDA' }}>
         <div style={{ maxWidth: 1160, margin: '0 auto', padding: '76px 28px' }}>
           <div style={{ textAlign: 'center', marginBottom: 56 }}>
             <div style={{ fontSize: 13, letterSpacing: 3, textTransform: 'uppercase', color: '#F0B84B', marginBottom: 12 }}>
@@ -251,7 +251,7 @@ export default function HomePage({ lang }: { lang: Lang }) {
       {/* ══ TESTIMONIALS ══ */}
       <section id="testimonials" style={{ maxWidth: 1160, margin: '0 auto', padding: '76px 28px' }}>
         <div style={{ textAlign: 'center', marginBottom: 48 }}>
-          <div style={{ fontSize: 13, letterSpacing: 3, textTransform: 'uppercase', color: '#854F0B', marginBottom: 12 }}>
+          <div style={{ fontSize: 13, letterSpacing: 3, textTransform: 'uppercase', color: 'var(--eyebrow)', marginBottom: 12 }}>
             {c.testimonials.eyebrow}
           </div>
           <h2
@@ -267,11 +267,11 @@ export default function HomePage({ lang }: { lang: Lang }) {
             <figure
               key={i}
               style={{
-                border: '1px solid #EAE3D3',
+                border: '1px solid var(--border)',
                 borderRadius: 18,
                 padding: 30,
                 margin: 0,
-                background: '#fff',
+                background: 'var(--surface)',
                 display: 'flex',
                 flexDirection: 'column',
                 gap: 16,
@@ -290,7 +290,7 @@ export default function HomePage({ lang }: { lang: Lang }) {
               >
                 &ldquo;{t.quote}&rdquo;
               </blockquote>
-              <figcaption lang="en" style={{ fontSize: 14, color: '#854F0B', fontWeight: 500 }}>
+              <figcaption lang="en" style={{ fontSize: 14, color: 'var(--eyebrow)', fontWeight: 500 }}>
                 {t.name} · {t.what}
               </figcaption>
             </figure>
@@ -303,10 +303,10 @@ export default function HomePage({ lang }: { lang: Lang }) {
       </section>
 
       {/* ══ FAQ ══ */}
-      <section id="faq" style={{ background: '#fff', borderTop: '1px solid #EAE3D3' }}>
+      <section id="faq" style={{ background: 'var(--surface)', borderTop: '1px solid var(--border)' }}>
         <div style={{ maxWidth: 820, margin: '0 auto', padding: '76px 28px' }}>
           <div style={{ textAlign: 'center', marginBottom: 44 }}>
-            <div style={{ fontSize: 13, letterSpacing: 3, textTransform: 'uppercase', color: '#854F0B', marginBottom: 12 }}>
+            <div style={{ fontSize: 13, letterSpacing: 3, textTransform: 'uppercase', color: 'var(--eyebrow)', marginBottom: 12 }}>
               {c.faq.eyebrow}
             </div>
             <h2
@@ -321,7 +321,7 @@ export default function HomePage({ lang }: { lang: Lang }) {
             {c.faq.items.map((f, i) => (
               <details key={i}>
                 <summary>{f.q}</summary>
-                <p style={{ margin: '14px 0 4px', fontSize: 15, lineHeight: 1.7, color: '#6B5335' }}>{f.a}</p>
+                <p style={{ margin: '14px 0 4px', fontSize: 15, lineHeight: 1.7, color: 'var(--ink-2)' }}>{f.a}</p>
               </details>
             ))}
           </div>
@@ -337,7 +337,7 @@ export default function HomePage({ lang }: { lang: Lang }) {
         >
           {c.cta.title}
         </h2>
-        <p style={{ color: '#6B5335', fontSize: 17, margin: '0 0 32px' }}>
+        <p style={{ color: 'var(--ink-2)', fontSize: 17, margin: '0 0 32px' }}>
           {c.cta.body}
         </p>
         <div style={{ display: 'flex', gap: 14, justifyContent: 'center', flexWrap: 'wrap' }}>
